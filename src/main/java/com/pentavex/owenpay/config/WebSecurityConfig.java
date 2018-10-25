@@ -1,10 +1,11 @@
-package com.pentavex.owenpay.controller;
+package com.pentavex.owenpay.config;
 
+import com.pentavex.owenpay.controller.JWTAuthenticationFilter;
+import com.pentavex.owenpay.controller.JWTLoginFilter;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -23,6 +24,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/configuration/security").permitAll()
                 .antMatchers("/swagger-ui.html", "/webjars/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
+                .antMatchers("/signin/**").permitAll()
+                .antMatchers("/login/**").permitAll()
+                .antMatchers("/signup/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 // We filter the api/login requests
