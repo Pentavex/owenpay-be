@@ -13,9 +13,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class UserControllerTest extends BaseTestClass {
 
-    private final static String USERNAME = "pentavex";
-    private final static String PASSWORD = "penta!123";
-
     @Before
     public void setUp() {
 
