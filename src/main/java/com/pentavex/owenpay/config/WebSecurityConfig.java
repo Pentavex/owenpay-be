@@ -1,5 +1,7 @@
-package com.pentavex.owenpay.controller;
+package com.pentavex.owenpay.config;
 
+import com.pentavex.owenpay.security.JWTAuthenticationFilter;
+import com.pentavex.owenpay.security.JWTLoginFilter;
 import com.pentavex.owenpay.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
