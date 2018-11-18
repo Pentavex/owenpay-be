@@ -1,7 +1,8 @@
-package com.pentavex.owenpay.service;
+package com.pentavex.owenpay.service.Imp;
 
 import com.pentavex.owenpay.domain.Group;
 import com.pentavex.owenpay.repository.GroupRepository;
+import com.pentavex.owenpay.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

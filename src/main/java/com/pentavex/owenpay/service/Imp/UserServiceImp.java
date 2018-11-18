@@ -1,7 +1,8 @@
-package com.pentavex.owenpay.service;
+package com.pentavex.owenpay.service.Imp;
 
 import com.pentavex.owenpay.domain.User;
 import com.pentavex.owenpay.repository.UserRepository;
+import com.pentavex.owenpay.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
