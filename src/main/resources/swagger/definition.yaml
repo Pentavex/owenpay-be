@@ -27,7 +27,7 @@ paths:
         "200":
           description: Successful operation
           schema:
-            $ref: "#/definitions/CreateUserResponse"
+            $ref: "#/definitions/GeneralResponse"
   /user/all:
     get:
       summary: Get all users by first and last name
@@ -36,9 +36,9 @@ paths:
       - application/json
       responses:
         200:
-          description: successful operation
+          description: Successful operation
           schema:
-            $ref: "#/definitions/GetUserResponse"
+            $ref: "#/definitions/GeneralResponse"
         400:
           description: Invalid username supplied
         404:
@@ -62,7 +62,7 @@ paths:
         "200":
           description: Successful operation
           schema:
-            $ref: "#/definitions/CreateGroupResponse"
+            $ref: "#/definitions/GeneralResponse"
   /group/addUser:
     post:
       summary:
@@ -80,7 +80,7 @@ paths:
         200:
           description: Successful operation
           schema:
-            $ref: "#/definitions/AddUserToGroupResponse"
+            $ref: "#/definitions/GeneralResponse"
   /group/listUsers:
     post:
       summary:
@@ -98,8 +98,7 @@ paths:
         200:
           description: Successful operation
           schema:
-            $ref: "#/definitions/GroupListUsersResponse"
-
+            $ref: "#/definitions/GeneralResponse"
 
 definitions:
   CreateUserRequest:
@@ -113,20 +112,6 @@ definitions:
       - username
       - password
 
-  CreateUserResponse:
-    type: object
-    properties:
-      message:
-        type: string
-        description: message
-
-  GetUserResponse:
-    type: object
-    properties:
-      usernames:
-        type: string
-        description: usernames
-
   CreateGroupRequest:
     type: object
     properties:
@@ -137,13 +122,6 @@ definitions:
     required:
     - groupname
     - username
-
-  CreateGroupResponse:
-    type: object
-    properties:
-      message:
-        type: string
-        description: message
 
   AddUserToGroupRequest:
     type: object
@@ -158,14 +136,6 @@ definitions:
     - userId
     - groupId
 
-  AddUserToGroupResponse:
-    type: object
-    properties:
-      message:
-        type: string
-        description: message
-
-
   GroupListUsersRequest:
     type: object
     properties:
@@ -175,12 +145,9 @@ definitions:
     required:
     - groupId
 
-  GroupListUsersResponse:
+  GeneralResponse:
     type: object
     properties:
       message:
         type: string
         description: message
-
-
-

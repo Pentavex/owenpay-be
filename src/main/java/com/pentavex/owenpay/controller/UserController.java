@@ -1,18 +1,17 @@
 package com.pentavex.owenpay.controller;
 
-import javax.validation.Valid;
+import com.pentavex.owenpay.domain.User;
+import com.pentavex.owenpay.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import swaggergen.controller.UserApi;
 import swaggergen.model.CreateUserRequest;
-import swaggergen.model.CreateUserResponse;
-import swaggergen.model.GetUserResponse;
+import swaggergen.model.GeneralResponse;
 
-import com.pentavex.owenpay.domain.User;
-import com.pentavex.owenpay.service.UserService;
+import javax.validation.Valid;
 
 @RestController
 public class UserController implements UserApi {
@@ -21,21 +20,21 @@ public class UserController implements UserApi {
     private UserService userService;
 
     @Override
-    public ResponseEntity<CreateUserResponse> createUser(@Valid @RequestBody final CreateUserRequest request) {
+    public ResponseEntity<GeneralResponse> createUser(@Valid @RequestBody final CreateUserRequest request) {
 
         User newUser = new User(request.getUsername(), request.getPassword());
 
         User savedUser = userService.saveOrUpdateUserForm(newUser);
 
-        CreateUserResponse response = new CreateUserResponse();
+        GeneralResponse response = new GeneralResponse();
         response.setMessage(savedUser.getUsername());
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @Override
-    public ResponseEntity<GetUserResponse> getUsers() {
-        GetUserResponse response = new GetUserResponse();
-        response.setUsernames("{\"firstname\":\"Richard\", \"lastname\":\"Feynman\"},"
+    public ResponseEntity<GeneralResponse> getUsers() {
+        GeneralResponse response = new GeneralResponse();
+        response.setMessage("{\"firstname\":\"Richard\", \"lastname\":\"Feynman\"},"
                 + "{\"firstname\":\"Marie\",\"lastname\":\"Curie\"}");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
