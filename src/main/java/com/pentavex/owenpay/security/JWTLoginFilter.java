@@ -1,4 +1,4 @@
-package com.pentavex.owenpay.controller;
+package com.pentavex.owenpay.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pentavex.owenpay.domain.User;

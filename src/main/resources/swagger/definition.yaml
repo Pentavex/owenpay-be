@@ -63,6 +63,42 @@ paths:
           description: Successful operation
           schema:
             $ref: "#/definitions/CreateGroupResponse"
+  /group/addUser:
+    post:
+      summary:
+      operationId: addUserToGroup
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: addUserToGroupRequest
+        description: User and Group ID
+        required: true
+        schema:
+          $ref: "#/definitions/AddUserToGroupRequest"
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            $ref: "#/definitions/AddUserToGroupResponse"
+  /group/listUsers:
+    post:
+      summary:
+      operationId: getUserList
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: groupListUsersRequest
+        description: Group Id
+        required: true
+        schema:
+          $ref: "#/definitions/GroupListUsersRequest"
+      responses:
+        200:
+          description: Successful operation
+          schema:
+            $ref: "#/definitions/GroupListUsersResponse"
 
 
 definitions:
@@ -108,5 +144,43 @@ definitions:
       message:
         type: string
         description: message
+
+  AddUserToGroupRequest:
+    type: object
+    properties:
+      userId:
+        type: integer
+        format: int64
+      groupId:
+        type: integer
+        format: int64
+    required:
+    - userId
+    - groupId
+
+  AddUserToGroupResponse:
+    type: object
+    properties:
+      message:
+        type: string
+        description: message
+
+
+  GroupListUsersRequest:
+    type: object
+    properties:
+      groupId:
+        type: integer
+        format: int64
+    required:
+    - groupId
+
+  GroupListUsersResponse:
+    type: object
+    properties:
+      message:
+        type: string
+        description: message
+
 
 

@@ -1,4 +1,4 @@
-package com.pentavex.owenpay.controller;
+package com.pentavex.owenpay.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
