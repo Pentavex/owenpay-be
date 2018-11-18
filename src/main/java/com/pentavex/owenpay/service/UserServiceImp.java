@@ -55,4 +55,13 @@ public class UserServiceImp implements UserService {
         System.out.println("Saved User Id: " + savedUser.getId());
         return savedUser;
     }
+
+    @Override
+    public Long getUserIdByUsername(final String username) {
+        User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException(username);
+        }
+        return user.getId();
+    }
 }
