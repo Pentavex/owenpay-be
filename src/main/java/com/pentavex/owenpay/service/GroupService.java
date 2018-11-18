@@ -8,5 +8,6 @@ public interface GroupService {
     List<Group> listAll();
     Group getById(Long id);
     Group saveOrUpdate(Group group);
+    Group createGroupWithUsername(String groupname, String username);
     void delete(Long id);
 }
