@@ -19,6 +19,9 @@ import org.springframework.web.context.WebApplicationContext;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public abstract class BaseTestClass {
 
+    protected final static String USERNAME = "pentavex";
+    protected final static String PASSWORD = "penta!123";
+
     @Autowired
     protected WebApplicationContext webApplicationContext;
 
