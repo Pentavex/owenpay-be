@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import swaggergen.controller.GroupApi;
 import swaggergen.model.AddUserToGroupRequest;
-import swaggergen.model.AddUserToGroupResponse;
 import swaggergen.model.CreateGroupRequest;
-import swaggergen.model.CreateGroupResponse;
+import swaggergen.model.GeneralResponse;
 import swaggergen.model.GroupListUsersRequest;
-import swaggergen.model.GroupListUsersResponse;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -26,21 +24,21 @@ public class GroupController implements GroupApi {
     private GroupService groupService;
 
     @Override
-    public ResponseEntity<CreateGroupResponse> createGroup(@Valid @RequestBody final CreateGroupRequest request) {
+    public ResponseEntity<GeneralResponse> createGroup(@Valid @RequestBody final CreateGroupRequest request) {
 
         Group savedGroup = groupService.createGroupWithUsername(request.getGroupname(), request.getUsername());
 
-        CreateGroupResponse response = new CreateGroupResponse();
+        GeneralResponse response = new GeneralResponse();
         response.setMessage(savedGroup.getGroupname());
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @Override
-    public ResponseEntity<AddUserToGroupResponse> addUserToGroup(
+    public ResponseEntity<GeneralResponse> addUserToGroup(
             @Valid @RequestBody final AddUserToGroupRequest addUserToGroupRequest) {
 
         groupService.addUserToGroupByIds(addUserToGroupRequest.getGroupId(), addUserToGroupRequest.getUserId());
-        AddUserToGroupResponse response = new AddUserToGroupResponse();
+        GeneralResponse response = new GeneralResponse();
 
         // TODO: change this message
         response.setMessage("Successfully Added");
@@ -48,12 +46,12 @@ public class GroupController implements GroupApi {
     }
 
     @Override
-    public ResponseEntity<GroupListUsersResponse> getUserList(
+    public ResponseEntity<GeneralResponse> getUserList(
             @Valid @RequestBody final GroupListUsersRequest groupListUsersRequest) {
 
         List<User> userList = groupService.getUsersByGroupId(groupListUsersRequest.getGroupId());
 
-        GroupListUsersResponse response = new GroupListUsersResponse();
+        GeneralResponse response = new GeneralResponse();
         response.setMessage("");
         for (User user : userList) {
             // TODO: change this to a meaningful response
