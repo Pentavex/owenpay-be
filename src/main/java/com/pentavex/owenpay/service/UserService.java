@@ -12,4 +12,5 @@ public interface UserService extends UserDetailsService {
     User saveOrUpdate(User user);
     void delete(Long id);
     User saveOrUpdateUserForm(User user);
+    Long getUserIdByUsername(String username);
 }

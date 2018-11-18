@@ -43,6 +43,26 @@ paths:
           description: Invalid username supplied
         404:
           description: User not found
+  /group/create:
+    post:
+      summary: Group creation service
+      operationId: createGroup
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: createGroupRequest
+        description: Group Name
+        required: true
+        schema:
+          $ref: "#/definitions/CreateGroupRequest"
+      responses:
+        "200":
+          description: Successful operation
+          schema:
+            $ref: "#/definitions/CreateGroupResponse"
 
 
 definitions:
@@ -70,5 +90,23 @@ definitions:
       usernames:
         type: string
         description: usernames
+
+  CreateGroupRequest:
+    type: object
+    properties:
+      groupname:
+        type: string
+      username:
+        type: string
+    required:
+    - groupname
+    - username
+
+  CreateGroupResponse:
+    type: object
+    properties:
+      message:
+        type: string
+        description: message
 
 
