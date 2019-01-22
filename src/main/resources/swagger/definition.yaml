@@ -10,7 +10,7 @@ schemes:
 paths:
   /user/create:
     post:
-      summary: User Create service.
+      summary: Create a user
       operationId: createUser
       consumes:
       -  application/json
@@ -45,7 +45,7 @@ paths:
           description: User not found
   /group/create:
     post:
-      summary: Group creation service
+      summary: Create a group
       operationId: createGroup
       consumes:
       - application/json
@@ -65,7 +65,7 @@ paths:
             $ref: "#/definitions/GeneralResponse"
   /group/addUser:
     post:
-      summary:
+      summary: Add user to a group
       operationId: addUserToGroup
       produces:
       - application/json
@@ -83,7 +83,7 @@ paths:
             $ref: "#/definitions/GeneralResponse"
   /group/listUsers:
     post:
-      summary:
+      summary: Get members of a group
       operationId: getUserList
       produces:
       - application/json
